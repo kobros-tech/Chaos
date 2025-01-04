@@ -530,8 +530,14 @@ class Controls(QWidget):
             self.rateval = linear_interp(self.rate_box.value(),
                                             0, 3.99, 0, 3.99, lim=1, dec=2)
             self.rate.blockSignals(True)
-            self.rate.setValue( linear_interp(self.rateval,
-                                            0, 3.99, 0, 99, lim=1, dec=2) )
+            self.rate.setValue( 
+                round(
+                    linear_interp(
+                        self.rateval,
+                        0, 3.99, 0, 99, lim=1, dec=2
+                    )
+                )
+            )
             self.rate.blockSignals(False)
 
         elif kind == 'ipop_slider':
@@ -548,8 +554,14 @@ class Controls(QWidget):
             self.ipopval = self.ipop_box.value()
 
             self.ipop.blockSignals(True)
-            self.ipop.setValue( linear_interp(self.ipopval,
-                                            0, 1, 0, 100, lim=1) )
+            self.ipop.setValue(
+                round(
+                    linear_interp(
+                        self.ipopval,
+                        0, 1, 0, 100, lim=1
+                    )
+                )
+            )
             self.ipop.blockSignals(False)
 
 
